@@ -23,7 +23,7 @@ Installing doas is accomplished in three steps:
 #### Linux
 
      make
-    
+
 #### FreeBSD, NetBSD and macOS
 
      gmake
@@ -35,14 +35,23 @@ Installing doas is accomplished in three steps:
 Alternatively, bison can be used if yacc is not installed.
 
      YACC="bison -y" PREFIX=/opt/local gmake
-   
+
 This builds the source code. Then, as the root user, run
 
 #### Linux
 
      make install
 
-#### FreeBSD and NetBSD 
+##### Fedora/CentOS
+On Fedora install the dependencies:
+
+    sudo dnf/yum install pam-devel byacc
+
+Fedora/CentOS also needs a PAM configuration file:
+
+    \cp --verbose /etc/pam.d/sudo /etc/pam.d/doas
+
+#### FreeBSD and NetBSD
 
      gmake install
 
