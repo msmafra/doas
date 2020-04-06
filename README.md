@@ -43,11 +43,11 @@ This builds the source code. Then, as the root user, run
      make install
 
 ##### Fedora/CentOS
-On Fedora install the dependencies:
+On Fedora (dnf) or CentOS (yum) install the dependencies:
 
     sudo dnf/yum install pam-devel byacc
 
-Fedora/CentOS also needs a PAM configuration file:
+Fedora or CentOS also needs a PAM configuration file:
 
     \cp --verbose /etc/pam.d/sudo /etc/pam.d/doas
 
