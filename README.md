@@ -40,7 +40,7 @@ This builds the source code. Then, as the root user, run
 
 #### Linux
 
-     make install
+    sudo make install
 
 ##### Fedora/CentOS
 On Fedora (dnf) or CentOS (yum) install the dependencies:
