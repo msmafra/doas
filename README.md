@@ -40,16 +40,12 @@ This builds the source code. Then, as the root user, run
 
 #### Linux
 
-    sudo make install
+     make install
 
-##### Fedora/CentOS
-On Fedora (dnf) or CentOS (yum) install the dependencies:
+Note to Linux users: Some Linux distributions, such as CentOS, will block doas from using PAM authentication by default. If this happens, it is usually possible to work around the issue by running the following command as the administrator:
 
-    sudo dnf/yum install pam-devel byacc
+      cp /etc/pam.d/sudo /etc/pam.d/doas
 
-Fedora or CentOS also needs a PAM configuration file:
-
-    \cp --verbose /etc/pam.d/sudo /etc/pam.d/doas
 
 #### FreeBSD and NetBSD
 
@@ -61,6 +57,7 @@ Fedora or CentOS also needs a PAM configuration file:
      cp /etc/pam.d/sudo /etc/pam.d/doas
 
 Note: By default macOS blocks doas from using PAM modules, causing doas authentication to fail. The cp command above copies the sudo PAM configuration into place for doas to use.
+
 
 #### illumos
 
