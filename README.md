@@ -79,6 +79,14 @@ Where <user> is the username of the person who is being granted root access. For
 
 Additional users can be added to the file, one per line.
 
+Please note that a shell script, vidoas, is included with the doas program. The vidoas
+script can be run as a regular user and will perform a syntax check on the doas.conf
+file before installing it on the system. This avoids breaking the doas.conf file. The
+vidoas script accepts no parameters and can be simply run as
+
+      vidoas
+
+
 To make use of doas, run it in front of any command. Here are some examples:
 
 Confirm doas is working by printing our effective user ID:
@@ -89,6 +97,6 @@ Create a new file in the root user's home:
 
      doas touch /root/new-file
 
-On Linux commands with arguments should be prefixed by a double-dash (--). Here we remove a directory owned by root:
+On Linux versions of doas prior to 6.3p1 required commands with arguments to be prefixed by a double-dash (--). From 6.3p1 and onward the double-dash is no longer required. Here we remove a directory owned by root:
 
      doas -- rm -rf old-directory
