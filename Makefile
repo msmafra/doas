@@ -24,6 +24,11 @@ ifeq ($(UNAME_S),FreeBSD)
     CFLAGS+=-DHAVE_LOGIN_CAP_H
     LDFLAGS+=-lutil
 endif
+ifeq ($(UNAME_S),NetBSD)
+    CFLAGS+=-DHAVE_LOGIN_CAP_H -D_OPENBSD_SOURCE
+    OBJECTS=doas.o env.o y.tab.o
+    LDFLAGS+=-lutil
+endif
 ifeq ($(UNAME_S),SunOS)
     SAFE_PATH?=/bin:/sbin:/usr/bin:/usr/sbin:$(PREFIX)/bin:$(PREFIX)/sbin
     GLOBAL_PATH?=/bin:/sbin:/usr/bin:/usr/sbin:$(PREFIX)/bin:$(PREFIX)/sbin
@@ -64,6 +69,12 @@ install: $(BIN)
 	cp doas.1.final $(MANDIR)/man1/doas.1
 	mkdir -p $(MANDIR)/man5
 	cp doas.conf.5.final $(MANDIR)/man5/doas.conf.5
+
+uninstall:
+	rm -f $(DESTDIR)$(PREFIX)/bin/doas
+	rm -f $(DESTDIR)$(PREFIX)/bin/vidoas
+	rm -f $(MANDIR)/man1/doas.1
+	rm -f $(MANDIR)/man5/doas.conf.5
 
 clean:
 	rm -f $(BIN) $(OBJECTS) y.tab.c
