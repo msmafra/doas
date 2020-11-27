@@ -7,7 +7,7 @@ URL:      https://github.com/slicer69/doas/
 Source0:  https://github.com/slicer69/doas/archive/%{version}.tar.gz
 
 %description
-A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos and macOS.
+Jesse Smith (slicer69) port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos and macOS.
 
 The doas utility is a program originally written for OpenBSD which allows a user to run a command as though they were another user. Typically doas is used to allow non-privleged users to run commands as though they were the root user. The doas program acts as an alternative to sudo, which is a popular method in the Linux community for granting admin access to specific users.
 
