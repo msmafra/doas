@@ -5,6 +5,7 @@ Summary:  A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, and ill
 License:  BSD-2-Clause License
 URL:      https://github.com/slicer69/doas/
 Source0:  https://github.com/slicer69/doas/archive/%{version}.tar.gz
+BuildArch: noarch
 
 %description
 Jesse Smith (slicer69) port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos and macOS.
@@ -14,6 +15,12 @@ The doas utility is a program originally written for OpenBSD which allows a user
 The doas program offers two benefits over sudo: its configuration file has a simple syntax and it is smaller, requiring less effort to audit the code. This makes it harder for both admins and coders to make mistakes that potentially open security holes in the system.
 
 This port of doas has been made to work on FreeBSD 11.x and newer, most distributions of Linux, NetBSD 8.x and newer, and most illumos distributions (tested on OmniOS and SmartOS). It also works on macOS Catalina.
+
+#-- PREP, BUILD & INSTALL -----------------------------------------------------#
+%prep
+cp /etc/pam.d/sudo /etc/pam.d/doas
+
+#-- CHANGELOG -----------------------------------------------------------------#
 
 %changelog
 * Fri Aug 7 2020 23 commits to master since this release
