@@ -16,10 +16,6 @@ The doas program offers two benefits over sudo: its configuration file has a sim
 
 This port of doas has been made to work on FreeBSD 11.x and newer, most distributions of Linux, NetBSD 8.x and newer, and most illumos distributions (tested on OmniOS and SmartOS). It also works on macOS Catalina.
 
-#-- PREP, BUILD & INSTALL -----------------------------------------------------#
-%prep
-cp /etc/pam.d/sudo /etc/pam.d/doas
-
 #-- CHANGELOG -----------------------------------------------------------------#
 
 %changelog
