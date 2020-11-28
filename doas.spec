@@ -5,18 +5,7 @@ Summary:  A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, and ill
 License:  BSD-2-Clause License
 URL:      https://github.com/slicer69/doas/
 Source0:  https://github.com/slicer69/doas/archive/%{version}.tar.gz
-
-%prep
-%autosetup
-
-%build
-%configure
-make %{?_smp_mflags}
-
-%install
-%make_install
-%find_lang %{name}
-cp --force /etc/pam.d/sudo /etc/pam.d/doas
+BuildRequires: pam-devel,byacc
 
 %description
 Jesse Smith's (slicer69) port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos and macOS.
