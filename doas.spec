@@ -3,7 +3,7 @@ Version:  6.3p2
 Release:  1%{?dist}
 Summary:  A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, and illumos
 License:  BSD-2-Clause License
-URL:      https://github.com/slicer69/doas/
+URL:      https://github.com/msmafra/doas/
 Source0:  https://github.com/slicer69/doas/archive/%{version}.tar.gz
 BuildRequires: pam-devel,byacc
 
@@ -20,19 +20,16 @@ This port of doas has been made to work on FreeBSD 11.x and newer, most distribu
 %setup -q
 
 %build
-%configure
+#%configure
 make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
-rm -rf $RPM_BUILD_ROOT
-
-%files
-%defattr(-,root,root,-)
-%doc
+#rm -rf $RPM_BUILD_ROOT
+make clean
 
 #-- CHANGELOG -----------------------------------------------------------------#
 
