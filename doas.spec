@@ -20,15 +20,12 @@ This port of doas has been made to work on FreeBSD 11.x and newer, most distribu
 %setup -q
 
 %build
-#%configure
-make %{?_smp_mflags}
+make
 
 %install
-#rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
 make clean
 
 #-- CHANGELOG -----------------------------------------------------------------#
