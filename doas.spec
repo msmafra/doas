@@ -23,7 +23,7 @@ This port of doas has been made to work on FreeBSD 11.x and newer, most distribu
 make
 
 %install
-make install
+sudo make install
 
 %clean
 make clean
