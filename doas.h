@@ -26,7 +26,7 @@ struct rule {
 };
 
 extern struct rule **rules;
-extern int nrules;
+extern size_t nrules;
 extern int parse_errors;
 
 struct passwd;
@@ -43,6 +43,7 @@ struct passwd *copyenvpw(struct passwd *original);
 #define NOPASS		0x1
 #define KEEPENV		0x2
 #define PERSIST		0x4
+#define NOLOG           0x8
 
 #ifndef UID_MAX
 #define UID_MAX 65535

@@ -28,6 +28,7 @@ PROG="${0##*/}"
 umask 022
 
 DOAS_CONF=@DOAS_CONF@
+doas_conf_mode="0600"
 
 die()
 {
@@ -220,8 +221,8 @@ do
 done
 
 # Use mv(1) to rename the temporary file to doas.conf as it is atomic.
-# This avoids any problems from another process reading doas.conf while
-# it is being written.
+# Update: No longer use mv as it messes up permissions on the doas.conf file.
+# Use install with ownership set to root.
 
 if [ -s "${tmp_doas}" ]
 then
@@ -230,7 +231,8 @@ then
 	warn "No changes made"
 	warn "${DOAS_CONF} unchanged"
     else
-	mv "${tmp_doas}" "${DOAS_CONF}" \
+	install -o root -m "${doas_conf_mode}" \
+	    "${tmp_doas}" "${DOAS_CONF}" \
 	&& warn "${DOAS_CONF} updated"
     fi
 else
