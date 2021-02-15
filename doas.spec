@@ -4,8 +4,10 @@ Release:  1%{?dist}
 Summary:  A port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, and illumos
 License:  BSD-2-Clause License
 URL:      https://github.com/msmafra/doas/
-Source0:  https://github.com/slicer69/doas/archive/%{version}.tar.gz
-BuildRequires: pam-devel,byacc
+Source0:  https://github.com/msmafra/doas/archive/%{version}.tar.gz
+BuildRoot:              %{_tmppath}/%{name}-%{version}-%
+BuildRequires: pam-devel
+BuildRequires: byacc
 
 %description
 Jesse Smith's (slicer69) port of OpenBSD's doas which runs on FreeBSD, Linux, NetBSD, illumos and macOS.
@@ -23,10 +25,12 @@ This port of doas has been made to work on FreeBSD 11.x and newer, most distribu
 make
 
 %install
-sudo make install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+cp -a * %{buildroot}
 
 %clean
-make clean
+rm -rf %{buildroot}
 
 #-- CHANGELOG -----------------------------------------------------------------#
 
