@@ -30,30 +30,28 @@ The doas command is in FreeBSD's ports collection and may be installed by simply
 
 ## Installing build tools
 
-1 - The doas program has virtually no dependencies. So long as you have a compiler (such as the GNU Compiler or Clang) installed and GNU make (gmake on NetBSD, FreeBSD, and illumos). On illumos, the build-essential package will install all the necessary build tools. 
+1 - The doas program has virtually no dependencies. So long as you have a compiler (such as the GNU Compiler or Clang) installed and GNU make (gmake on NetBSD, FreeBSD, and illumos). On illumos, the build-essential package will install all the necessary build tools.
 
 #### Debian and Ubuntu based distributions
 
-     sudo apt install build-essential make bison flex libpam0g-dev 
+     sudo apt install build-essential make bison flex libpam0g-dev
 
-#### Fedora
+### Fedora
 
-     sudo dnf install gcc gcc-c++ kernel-devel make flex bison bison-devel flex-devel pam-devel byacc
-    
+      sudo dnf install gcc gcc-c++ make flex bison pam-devel byacc
+
+### CentOS 8 and Stream
+
+      sudo dnf install gcc gcc-c++ make flex bison pam-devel byacc git
+
+### CentOS 7.x
+
+      sudo yum install gcc gcc-c++ make flex bison pam-devel byacc git
+
 #### macOS
 
      xcode-select --install
-     
-### Fedora and CentOS 8+
 
-On Fedora or CentOS 8+ install the dependencies:
-
-     sudo dnf groupinstall development-tools
-     sudo dnf install pam-devel byacc
-     
-### CentOS 7.x
-     sudo yum groupinstall development
-     sudo yum install pam-devel byacc
 
 ## Compiling and installing
 
@@ -142,7 +140,7 @@ vidoas script accepts no parameters and can be simply run as
 
 ## Desktop applications (GUI applications)
 
-Please be aware that, by default, doas scrubs most environment variables. In effect 
+Please be aware that, by default, doas scrubs most environment variables. In effect
 this means certain information about your environment will not be passed to the target
 user and graphical desktop applications (GUI applications) will not be able to run.
 To enable graphical applications to run from doas, please use the keepenv keyword
