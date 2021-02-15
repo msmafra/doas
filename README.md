@@ -43,6 +43,17 @@ The doas command is in FreeBSD's ports collection and may be installed by simply
 #### macOS
 
      xcode-select --install
+     
+### Fedora and CentOS 8+
+
+On Fedora or CentOS 8+ install the dependencies:
+
+     sudo dnf groupinstall development-tools
+     sudo dnf install pam-devel byacc
+     
+### CentOS 7.x
+     sudo yum groupinstall development
+     sudo yum install pam-devel byacc
 
 ## Compiling and installing
 
