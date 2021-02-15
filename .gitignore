@@ -2,3 +2,4 @@
 *.final
 y.tab.c
 doas
+*.backup
