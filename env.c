@@ -102,6 +102,9 @@ copyenvpw(struct passwd *my_static)
     new_pw->pw_passwd = strdup(my_static->pw_passwd);
     new_pw->pw_uid = my_static->pw_uid;
     new_pw->pw_gid = my_static->pw_gid;
+    #if defined(__FreeBSD__)
+    new_pw->pw_class = strdup(my_static->pw_class);
+    #endif
     new_pw->pw_gecos = strdup(my_static->pw_gecos);
     new_pw->pw_dir = strdup(my_static->pw_dir);
     new_pw->pw_shell = strdup(my_static->pw_shell);
@@ -140,7 +143,7 @@ createenv(struct rule *rule, struct passwd *original, struct passwd *target)
 			struct envnode *node;
 			const char *e, *eq;
 			size_t len;
-			char name[1024];
+			char name[MAX_ENV_LENGTH];
 
 			e = environ[i];
 
@@ -192,7 +195,7 @@ fillenv(struct env *env, const char **envlist)
 	struct envnode *node, key;
 	const char *e, *eq;
 	const char *val;
-	char name[1024];
+	char name[MAX_ENV_LENGTH];
 	u_int i;
 	size_t len;
 
